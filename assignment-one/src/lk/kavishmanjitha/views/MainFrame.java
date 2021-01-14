@@ -1,27 +1,31 @@
 package lk.kavishmanjitha.views;
 
-import lk.kavishmanjitha.Constant;
+import lk.kavishmanjitha.util.Constant;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class MainFrame extends JFrame {
 
+    public static JLabel statusLabel;
+
     public MainFrame() {
-        setSize(Constant.FRAME_WIDTH, Constant.FRAME_HEIGHT);
+        pack();
         setTitle(Constant.APPLICATION_TITLE);
+        setSize(Constant.FRAME_WIDTH, Constant.FRAME_HEIGHT);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        JPanel gamePanel = new JPanel();
+        GamePanel gamePanel = new GamePanel();
         gamePanel.setBackground(Color.WHITE);
-        gamePanel.setPreferredSize(new Dimension(500, 500));
-        gamePanel.setBounds(0, 0, 500, 500);
+        gamePanel.setPreferredSize(new Dimension(Constant.GAME_PANEL_WIDTH, Constant.GAME_PANEL_HEIGHT));
+        gamePanel.setFocusable(true);
+        gamePanel.requestFocus();
+        gamePanel.setBounds(0, 0, Constant.GAME_PANEL_WIDTH, Constant.GAME_PANEL_HEIGHT);
         add(gamePanel, BorderLayout.NORTH);
 
         JButton startButton = new JButton();
@@ -29,10 +33,10 @@ public class MainFrame extends JFrame {
         startButton.setBackground(Color.GREEN);
         add(startButton, BorderLayout.WEST);
 
-        JLabel statusLable = new JLabel();
-        statusLable.setText("SCORE : 0");
-        statusLable.setBorder(new EmptyBorder(0, 50, 0, 0));
-        add(statusLable, BorderLayout.CENTER);
+        statusLabel = new JLabel();
+        statusLabel.setText("SCORE : 0");
+        statusLabel.setBorder(new EmptyBorder(0, 50, 0, 0));
+        add(statusLabel, BorderLayout.CENTER);
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
