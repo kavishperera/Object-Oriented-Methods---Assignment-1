@@ -9,7 +9,7 @@ import java.awt.image.*;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-public class GamePanel extends JPanel implements Runnable, KeyListener {
+public class GamePanel extends JPanel implements Runnable {
 
     private Graphics2D graphics2D;
     private BufferedImage bufferedImage;
@@ -26,13 +26,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     private int dx;
     private int dy;
 
-    private boolean upDirection;
-    private boolean downDirection;
-    private boolean rightDirection;
-    private boolean leftDirection;
+    public static boolean upDirection;
+    public static boolean downDirection;
+    public static boolean rightDirection;
+    public static boolean leftDirection;
 
     public GamePanel() {
-        addKeyListener(this);
+        addKeyListener(new DirectionKeyAdapter());
     }
 
     @Override
@@ -56,45 +56,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         super.addNotify();
         thread = new Thread(this);
         thread.start();
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int k = e.getKeyCode();
-        if (k == KeyEvent.VK_UP) {
-            upDirection = true;
-        }
-        if (k == KeyEvent.VK_DOWN) {
-            downDirection = true;
-        }
-        if (k == KeyEvent.VK_LEFT) {
-            leftDirection = true;
-        }
-        if (k == KeyEvent.VK_RIGHT) {
-            rightDirection = true;
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int k = e.getKeyCode();
-        if (k == KeyEvent.VK_UP) {
-            upDirection = false;
-        }
-        if (k == KeyEvent.VK_DOWN) {
-            downDirection = false;
-        }
-        if (k == KeyEvent.VK_LEFT) {
-            leftDirection = false;
-        }
-        if (k == KeyEvent.VK_RIGHT) {
-            rightDirection = false;
-        }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
     }
 
     private void gameInitialize() {
