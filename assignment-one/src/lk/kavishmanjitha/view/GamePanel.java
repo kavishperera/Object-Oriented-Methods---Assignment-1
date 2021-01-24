@@ -1,10 +1,9 @@
-package lk.kavishmanjitha.views;
+package lk.kavishmanjitha.view;
 
 import lk.kavishmanjitha.model.Entity;
 import lk.kavishmanjitha.util.Constant;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.image.*;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -46,8 +45,9 @@ public class GamePanel extends JPanel implements Runnable {
             entitiesRender();
             try {
                 Thread.sleep(Constant.GAME_SPEED);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (InterruptedException e) {
+                MainFrame.statusLabel.setText("Something went wrong !!!");
+                MainFrame.statusLabel.setForeground(Color.RED);
             }
         }
     }

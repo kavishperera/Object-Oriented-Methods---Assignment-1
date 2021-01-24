@@ -1,4 +1,4 @@
-package lk.kavishmanjitha.views;
+package lk.kavishmanjitha.view;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

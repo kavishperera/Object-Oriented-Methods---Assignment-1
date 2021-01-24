@@ -1,4 +1,4 @@
-package lk.kavishmanjitha.views;
+package lk.kavishmanjitha.view;
 
 import lk.kavishmanjitha.util.Constant;
 

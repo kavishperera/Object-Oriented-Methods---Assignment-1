@@ -1,6 +1,6 @@
 package lk.kavishmanjitha;
 
-import lk.kavishmanjitha.views.MainFrame;
+import lk.kavishmanjitha.view.MainFrame;
 
 public class Main {
 
